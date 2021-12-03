@@ -1,6 +1,6 @@
 function iniciar() {
-  let showFormularioFilme = mostrarEsconderFormulario("filme", false);
-  let showFormularioLivro = mostrarEsconderFormulario("livro", false);
+  let showFomularioFilme = false;
+  let showFomularioLivro = false;  
   let aguardaClick = aguardaClickIndicacao();
 
   /* Para ocultar as sections de filme e livro no carregamento */
@@ -20,6 +20,9 @@ function iniciar() {
     mostraEscondeSectionLivro();
   });
   /* FIM - Para ocultar as sections de filme e livro no carregamento */
+
+  let formFilme = document.getElementById('formIndicacaoFilme').style.display = 'none';
+  let formLivro = document.getElementById('formIndicacaoLivro').style.display = 'none';
 
   function getFormsFilmes() {
     const filme = {
@@ -56,10 +59,11 @@ function iniciar() {
     });
   }
 
-  function mostrarEsconderFormulario(tipo, showFomulario) {
+  function mostrarEsconderFormulario(tipo) {
+    let statusFilme = !showFomularioFilme;
     if (tipo == "filme") {
       let formFilme = document.getElementById('formIndicacaoFilme');
-      if (!showFomulario) {
+      if (!statusFilme) {
         formFilme.style.display = 'none';
       }
       else {
@@ -67,8 +71,9 @@ function iniciar() {
       } 
     }
     else if (tipo == "livro") {
+      let statusLivro = !showFomularioLivro;
       let formLivro = document.getElementById('formIndicacaoLivro');
-      if (!showFomulario) {
+      if (!statusLivro) {
         formLivro.style.display = 'none';
       }
       else {
@@ -80,20 +85,22 @@ function iniciar() {
   function aguardaClickIndicacao() {
     let indicarFilme = document.getElementById('botaoIndicarFilme');
     indicarFilme.addEventListener("click", function() {
-      mostrarEsconderFormulario("filme", true);
+      mostrarEsconderFormulario("filme");
     });
 
     let indicarLivro = document.getElementById('botaoIndicarLivro');
     indicarLivro.addEventListener("click", function() {
-      mostrarEsconderFormulario("livro", true);
+      mostrarEsconderFormulario("livro");
     });
   }
 
   function mostraEscondeSectionFilme() {
+    let sectionLivro = document.getElementById('sectionLivro');
     let sectionFilme = document.getElementById('sectionFilme');
     mostrarSectionFilme = !mostrarSectionFilme;
     if (mostrarSectionFilme) {
       sectionFilme.style.display = 'block';
+      sectionLivro.style.display = 'none';
     }
     else {
       sectionFilme.style.display = 'none';
@@ -102,16 +109,15 @@ function iniciar() {
 
   function mostraEscondeSectionLivro() {
     let sectionLivro = document.getElementById('sectionLivro');
+    let sectionFilme = document.getElementById('sectionFilme');
     mostrarSectionLivro = !mostrarSectionLivro;
     if (mostrarSectionLivro) {
       sectionLivro.style.display = 'block';
+      sectionFilme.style.display = 'none';
     }
     else {
       sectionLivro.style.display = 'none';
     }
   }
 }
-
-
-
 document.addEventListener("DOMContentLoaded", iniciar);
