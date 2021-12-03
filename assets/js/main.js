@@ -24,6 +24,19 @@ function iniciar() {
   let formFilme = document.getElementById('formIndicacaoFilme').style.display = 'none';
   let formLivro = document.getElementById('formIndicacaoLivro').style.display = 'none';
 
+  let contadorFilme = 0;
+  let botaoEnviarAvaliacaoFilme = document.getElementById('formIndicacaoFilme');
+  botaoEnviarAvaliacaoFilme.addEventListener("submit", function(event) {
+    event.preventDefault();
+    let filmeDigitado = getFormsFilmes();
+    adicionaLocalStorageFilme(filmeDigitado);
+
+  })
+  let botaoEnviarAvaliacaoLivro = document.getElementById('formIndicacaoLivro');
+  botaoEnviarAvaliacaoLivro.addEventListener("submit", function(event) {
+    event.preventDefault();
+  })
+
   function getFormsFilmes() {
     const filme = {
       nomeFilme: document.getElementById('inputNomeFilme').value,
@@ -118,6 +131,12 @@ function iniciar() {
     else {
       sectionLivro.style.display = 'none';
     }
+  }
+
+  function adicionaLocalStorageFilme(objetoFilme) {
+    let nomeVariavel = `${'filme'+contadorFilme}`;
+    localStorage.setItem(nomeVariavel, JSON.stringify(objetoFilme));
+    contadorFilme++;
   }
 }
 document.addEventListener("DOMContentLoaded", iniciar);
