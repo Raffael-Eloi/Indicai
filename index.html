@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="assets/css/sectionFilme/sectionFilme.css">
     <link rel="stylesheet" href="assets/css/sectionFilme/sectionFime-opcoes.css">
     <link rel="stylesheet" href="assets/css/sectionFilme/sectionFilme-botao.css">
+    <link rel="stylesheet" href="assets/css/formFilme/formFilme.css">
+    <link rel="stylesheet" href="assets/css/formFilme/formFilme-botao.css">
 
     <!-- Google Fonte -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +51,7 @@
           </div>
         </div>
 
-        <form id="formIndicacaoFilme">
+        <form id="formIndicacaoFilme" class="formFilme">
           <fieldset>
             <legend>Nome</legend>
             <input id="inputNomeFilme" type="text" placeholder="nome do filme" required>
@@ -62,8 +64,7 @@
 
           <fieldset>
             <legend>Descrição</legend>
-            <textarea name="textAreaDescricaoFilme" id="textAreaDescricaoFilme" cols="30" rows="10" required>
-            </textarea>
+            <textarea name="textAreaDescricaoFilme" id="textAreaDescricaoFilme" cols="30" rows="10" required></textarea>
           </fieldset>
 
           <fieldset>
@@ -71,7 +72,7 @@
             <input id="inputNotaFilme" type="number" placeholder="ex.: 8" required>
           </fieldset>
 
-          <button id="botaoEnviarAvaliacaoFilme">Enviar avaliação</button>
+          <button id="botaoEnviarAvaliacaoFilme" class="formFilme__botao">Enviar avaliação</button>
 
         </form>
 
