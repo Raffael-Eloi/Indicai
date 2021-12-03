@@ -8,96 +8,102 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/telaInicial/telaInicial.css">
+    <link rel="stylesheet" href="assets/css/telaInicial/telaInicial-escolhas.css">
+    <link rel="stylesheet" href="assets/css/telaInicial/telaInicial-escolhas-filme.css">
+    <link rel="stylesheet" href="assets/css/telaInicial/telaInicial-escolhas-livro.css">
 
-    <title>Indicação</title>
+    <title>Indicai</title>
   </head>
   <body>
     <header>
     </header>
 
     <main>
-      <section>
+
+      <section class="telaInicial">
+        <h1>Seja bem vindo ao software indicai</h1>
+        <h2>O que deseja ver ?</h2>
+        <div class="telaInicial__escolhas">
+          <div id="escolhaFilme" class="telaInicial__escolhas__filme">Filme</div>
+          <div id="escolhaLivro" class="telaInicial__escolhas__livro">Livro</div>
+        </div>
+      </section>
+
+      <section id="sectionFilme">
         <div>
-          <h1>Escolha sua indicação</h1>
-          <p>Filme - Livro (Aqui vai ter um switch para escolher qual a categoria)</p>
+          <h1>O que deseja ver no filme?</h1>
           <div>
-            <button>Indicar filme</button>
+            <button id="botaoIndicarFilme">Indicar filme</button>
             <button>Ver indicações de filme</button>
           </div>
         </div>
 
-        <form>
+        <form id="formIndicacaoFilme">
           <fieldset>
             <legend>Nome</legend>
-            <input type="text">
-          </fieldset>
-
-          <fieldset>
-            <legend>Título</legend>
-            <input type="text">
+            <input id="inputNomeFilme" type="text" placeholder="nome do filme" required>
           </fieldset>
 
           <fieldset>
             <legend>Gênero</legend>
-            <input type="text">
+            <input id="inputGeneroFilme" type="text" placeholder="ex.: Ação" required>
           </fieldset>
 
           <fieldset>
             <legend>Descrição</legend>
-            <input type="text">
+            <textarea name="textAreaDescricaoFilme" id="textAreaDescricaoFilme" cols="30" rows="10" required>
+            </textarea>
           </fieldset>
 
           <fieldset>
             <legend>Nota</legend>
-            <input type="text">
+            <input id="inputNotaFilme" type="number" placeholder="ex.: 8" required>
           </fieldset>
+
+          <button id="botaoEnviarAvaliacaoFilme">Enviar avaliação</button>
 
         </form>
 
       </section>
 
-      <section>
+      <section id="sectionLivro">
         <div>
-          <h1>Escolha sua indicação</h1>
-          <p>Filme - Livro (Aqui vai ter um switch para escolher qual a categoria)</p>
+          <h1>O que deseja ver no livro?</h1>
           <div>
-            <button>Indicar livro</button>
+            <button id="botaoIndicarLivro">Indicar livro</button>
             <button>Ver indicações de livro</button>
           </div>
         </div>
       </section>
 
-      <form>
+      <form id="formIndicacaoLivro">
         <fieldset>
           <legend>Nome</legend>
-          <input type="text">
-        </fieldset>
-
-        <fieldset>
-          <legend>Título</legend>
-          <input type="text">
+          <input id="inputNomeLivro" type="text" placeholder="nome do livro">
         </fieldset>
 
         <fieldset>
           <legend>Gênero</legend>
-          <input type="text">
+          <input id="inputGeneroLivro" type="text" placeholder="ex.: Ficção científica">
         </fieldset>
         
         <fieldset>
           <legend>Quantidade de páginas</legend>
-          <input type="text">
+          <input id="inputQtdPaginasLivro" type="number" placeholder="ex.: 51">
         </fieldset>
 
         <fieldset>
           <legend>Descrição</legend>
-          <input type="text">
+          <textarea name="textAreaDescricaoLivro" id="textAreaDescricaoLivro" cols="30" rows="10"></textarea>
         </fieldset>
 
         <fieldset>
           <legend>Nota</legend>
-          <input type="text">
+          <input id="inputNotaLivro" type="number" placeholder="ex.: 8">
         </fieldset>
 
+        <button id="botaoEnviarAvaliacaoLivro">Enviar avaliação</button>
       </form>
 
 
