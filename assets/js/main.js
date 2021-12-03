@@ -39,6 +39,7 @@ function iniciar() {
   })
   /* FIM - Pegando dados digitados e inserindo na localStorage */
 
+  let listaDeFilmes = document.getElementById('listaFilmes').style.display = 'none';
   let verIndicacoesFilme = document.getElementById('botaoVerIndicacoesFilme');
   verIndicacoesFilme.addEventListener("click", function() {
     if (localStorage.length != 0) {
@@ -56,6 +57,7 @@ function iniciar() {
       descricaoFilme: document.getElementById('textAreaDescricaoFilme').value,
       notaFilme: document.getElementById('inputNotaFilme').value,
     }
+    limparCamposFilme();
     return filme;
   }
 
@@ -67,42 +69,48 @@ function iniciar() {
       descricaoLivro: document.getElementById('textAreaDescricaoLivro').value,
       notaLivro: document.getElementById('inputNotaLivro').value,
     }
+    limparCamposLivro();
     return livro;
   }
 
-  function aguardaEventoFormulario() {
-    let formularioFilme = document.getElementById('formIndicacaoFilme');
-    formularioFilme.addEventListener("submit", function(event){
-      event.preventDefault();
-      console.log(getFormsFilmes());
-    });
+  function limparCamposFilme() {
+    document.getElementById('inputNomeFilme').value = '';
+    document.getElementById('inputGeneroFilme').value = '';
+    document.getElementById('textAreaDescricaoFilme').value = '';
+    document.getElementById('inputNotaFilme').value = '';
+  }
 
-    let formularioLivro = document.getElementById('formIndicacaoLivro');
-    formularioLivro.addEventListener("submit", function(event) {
-      event.preventDefault();
-      console.log(getFormsLivros());
-    });
+  function limparCamposLivro() {
+    document.getElementById('inputNomeLivro').value = '';
+    document.getElementById('inputGeneroLivro').value = '';
+    document.getElementById('inputQtdPaginasLivro').value = '';
+    document.getElementById('textAreaDescricaoLivro').value = '';
+    document.getElementById('inputNotaLivro').value = '';
   }
 
   function mostrarEsconderFormulario(tipo) {
     let statusFilme = !showFomularioFilme;
     if (tipo == "filme") {
       let formFilme = document.getElementById('formIndicacaoFilme');
-      if (!statusFilme) {
-        formFilme.style.display = 'none';
+      if (!!statusFilme) {
+        formFilme.style.display = 'block';
+        showFomularioFilme = !showFomularioFilme;
       }
       else {
-        formFilme.style.display = 'block';
+        formFilme.style.display = 'none';
+        showFomularioFilme = !showFomularioFilme;
       } 
     }
     else if (tipo == "livro") {
       let statusLivro = !showFomularioLivro;
       let formLivro = document.getElementById('formIndicacaoLivro');
-      if (!statusLivro) {
-        formLivro.style.display = 'none';
+      if (!!statusLivro) {
+        formLivro.style.display = 'block';
+        showFomularioLivro = !showFomularioLivro;
       }
       else {
-        formLivro.style.display = 'block';
+        formLivro.style.display = 'none';
+        showFomularioLivro = !showFomularioLivro;
       }
     }
   }
@@ -146,7 +154,7 @@ function iniciar() {
   }
 
   function adicionaLocalStorageFilme(objetoFilme) {
-    let nomeVariavel = `${'filme'+contadorFilme}`;
+    let nomeVariavel = `${'filme'+contadorFilme}`; 
     localStorage.setItem(nomeVariavel, JSON.stringify(objetoFilme));
     contadorFilme++;
   }
@@ -161,7 +169,7 @@ function iniciar() {
         document.getElementById('listaFilmesDescricao').innerHTML = filmesObj.descricaoFilme;
         document.getElementById('listaFilmesNota').innerHTML = filmesObj.notaFilme;
       }
-      else if (!!localStorage[filme+i]) {
+      else if (!!localStorage[filme+i]) {  
         let filmesObj = JSON.parse(localStorage[filme+i]);
         let divPai = document.querySelector('.listaFilmes'); 
         let divPadrao = document.getElementById('listaFilmes__item');
@@ -173,6 +181,7 @@ function iniciar() {
         div.querySelector('#listaFilmesNota').innerHTML = filmesObj.notaFilme;
       }
     }
+    document.getElementById('listaFilmes').style.display = 'flex';
   }
 }
 document.addEventListener("DOMContentLoaded", iniciar);
