@@ -7,3 +7,15 @@ main {
   padding: 2rem;
 }
 
+.cabecalho {
+  background: rgb(73, 73, 73);
+  padding: 1rem;
+  text-align: center;
+  color: #fdfdfd;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.cabecalho:hover {
+  cursor: pointer;
+}
