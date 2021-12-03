@@ -3,11 +3,12 @@ function iniciar() {
   let contadorDeLivros = 0;
   let arrayDeIdFilme = [];
   let arrayDeIdLivro = [];
-
+  
+  
   let showFomularioFilme = false;
   let showFomularioLivro = false;  
   let aguardaClick = aguardaClickIndicacao();
-
+  
   /* Para ocultar as sections de filme e livro no carregamento */
   let escolhaFilme = document.getElementById('escolhaFilme');
   let mostrarSectionFilme = true;
@@ -20,15 +21,15 @@ function iniciar() {
   escolhaFilme.addEventListener("click", function() {
     mostraEscondeSectionFilme();
   });
-
+  
   escolhaLivro.addEventListener("click", function() {
     mostraEscondeSectionLivro();
   });
   /* FIM - Para ocultar as sections de filme e livro no carregamento */
-
+  
   let formFilme = document.getElementById('formIndicacaoFilme').style.display = 'none';
   let formLivro = document.getElementById('formIndicacaoLivro').style.display = 'none';
-
+  
   /* Pegando dados digitados e inserindo na localStorage */
   let contadorFilme = 0;
   let botaoEnviarAvaliacaoFilme = document.getElementById('formIndicacaoFilme');
@@ -36,9 +37,9 @@ function iniciar() {
     event.preventDefault();
     let filmeDigitado = getFormsFilmes();
     adicionaLocalStorageFilme(filmeDigitado);
-
+    
   });
-
+  
   let contadorLivro = 0;
   let botaoEnviarAvaliacaoLivro = document.getElementById('formIndicacaoLivro');
   botaoEnviarAvaliacaoLivro.addEventListener("submit", function(event) {
@@ -47,7 +48,7 @@ function iniciar() {
     adicionaLocalStorageLivro(livroDigitado);
   });
   /* FIM - Pegando dados digitados e inserindo na localStorage */
-
+  
   let listaDeFilmes = document.getElementById('listaFilmes').style.display = 'none';
   let verIndicacoesFilme = document.getElementById('botaoVerIndicacoesFilme');
   verIndicacoesFilme.addEventListener("click", function() {
@@ -58,7 +59,7 @@ function iniciar() {
       alert('Você não inseriu nenhum dado ainda!');
     }
   })
-
+  
   let listaDeLivros = document.getElementById('listaLivros').style.display = 'none';
   let verIndicacoesLivro = document.getElementById('botaoVerIndicacoesLivro');
   verIndicacoesLivro.addEventListener("click", function() {
@@ -68,6 +69,19 @@ function iniciar() {
     else {
       alert('Você não inseriu nenhum dado ainda!');
     }
+  })
+  
+  document.getElementById('informacao').style.display = 'none';
+  let verInformacoes = document.getElementById('telaInicial__informacoes');
+  verInformacoes.addEventListener("click", function() {
+    document.getElementById('informacao').style.display = 'block';
+    document.getElementById('telaInicial').style.display = 'none';
+  });
+
+  let fecharInformacoes = document.getElementById('informacao__fechar');
+  fecharInformacoes.addEventListener("click", function() {
+    document.getElementById('informacao').style.display = 'none';
+    document.getElementById('telaInicial').style.display = 'block';
   })
 
   function getFormsFilmes() {
