@@ -24,6 +24,7 @@ function iniciar() {
   let formFilme = document.getElementById('formIndicacaoFilme').style.display = 'none';
   let formLivro = document.getElementById('formIndicacaoLivro').style.display = 'none';
 
+  /* Pegando dados digitados e inserindo na localStorage */
   let contadorFilme = 0;
   let botaoEnviarAvaliacaoFilme = document.getElementById('formIndicacaoFilme');
   botaoEnviarAvaliacaoFilme.addEventListener("submit", function(event) {
@@ -35,6 +36,17 @@ function iniciar() {
   let botaoEnviarAvaliacaoLivro = document.getElementById('formIndicacaoLivro');
   botaoEnviarAvaliacaoLivro.addEventListener("submit", function(event) {
     event.preventDefault();
+  })
+  /* FIM - Pegando dados digitados e inserindo na localStorage */
+
+  let verIndicacoesFilme = document.getElementById('botaoVerIndicacoesFilme');
+  verIndicacoesFilme.addEventListener("click", function() {
+    if (localStorage.length != 0) {
+      mostrarListaDeFilmes();
+    }
+    else {
+      alert('Você não inseriu nenhum dado ainda!');
+    }
   })
 
   function getFormsFilmes() {
@@ -137,6 +149,30 @@ function iniciar() {
     let nomeVariavel = `${'filme'+contadorFilme}`;
     localStorage.setItem(nomeVariavel, JSON.stringify(objetoFilme));
     contadorFilme++;
+  }
+
+  function mostrarListaDeFilmes() {
+    let filme = 'filme';
+    for (let i=0; i<localStorage.length; i++){
+      if (!!localStorage[filme+i] && i == 0) {
+        let filmesObj = JSON.parse(localStorage[filme+i]);
+        document.getElementById('listaFilmesNome').innerHTML = filmesObj.nomeFilme;
+        document.getElementById('listaFilmesGenero').innerHTML = filmesObj.generoFilme;
+        document.getElementById('listaFilmesDescricao').innerHTML = filmesObj.descricaoFilme;
+        document.getElementById('listaFilmesNota').innerHTML = filmesObj.notaFilme;
+      }
+      else if (!!localStorage[filme+i]) {
+        let filmesObj = JSON.parse(localStorage[filme+i]);
+        let divPai = document.querySelector('.listaFilmes'); 
+        let divPadrao = document.getElementById('listaFilmes__item');
+        let div = divPadrao.cloneNode(true);
+        divPai.appendChild(div);
+        div.querySelector('#listaFilmesNome').innerHTML = filmesObj.nomeFilme;
+        div.querySelector('#listaFilmesGenero').innerHTML = filmesObj.generoFilme;
+        div.querySelector('#listaFilmesDescricao').innerHTML = filmesObj.descricaoFilme;
+        div.querySelector('#listaFilmesNota').innerHTML = filmesObj.notaFilme;
+      }
+    }
   }
 }
 document.addEventListener("DOMContentLoaded", iniciar);
