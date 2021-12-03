@@ -1,10 +1,16 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Roboto Mono', monospace;
+  display: grid;
+  grid-template-areas: 
+    "cabecalho",
+    "conteudo-principal",
+    "rodape";
+  grid-template-rows: auto auto auto;
 }
 
-main {
-  padding: 2rem;
+header {
+  grid-area: "cabecalho";
 }
 
 .cabecalho {
@@ -18,4 +24,13 @@ main {
 
 .cabecalho:hover {
   cursor: pointer;
+}
+
+main {
+  padding: 2rem;
+  grid-area: "conteudo-principal";
+}
+
+rodape {
+  grid-area: "rodape";
 }
