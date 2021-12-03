@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="assets/css/telaInicial/telaInicial-escolhas.css">
     <link rel="stylesheet" href="assets/css/telaInicial/telaInicial-escolhas-filme.css">
     <link rel="stylesheet" href="assets/css/telaInicial/telaInicial-escolhas-livro.css">
+    <link rel="stylesheet" href="assets/css/sectionFilme/sectionFilme.css">
+    <link rel="stylesheet" href="assets/css/sectionFilme/sectionFime-opcoes.css">
+    <link rel="stylesheet" href="assets/css/sectionFilme/sectionFilme-botao.css">
 
     <!-- Google Fonte -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,11 +26,11 @@
     <title>Indicai</title>
   </head>
   <body>
-    <header>
+    <header class="cabecalho">
+      teste
     </header>
 
     <main>
-
       <section class="telaInicial">
         <h1>Seja bem vindo ao software indicai</h1>
         <h2>O que deseja ver ?</h2>
@@ -37,12 +40,12 @@
         </div>
       </section>
 
-      <section id="sectionFilme">
-        <div>
+      <section id="sectionFilme" class="sectionFilme">
+        <div class="sectionFilme__opcoes">
           <h1>O que deseja ver no filme?</h1>
           <div>
-            <button id="botaoIndicarFilme">Indicar filme</button>
-            <button>Ver indicações de filme</button>
+            <button id="botaoIndicarFilme" class="sectionFilme__botao">Indicar filme</button>
+            <button id="botaoVerIndicacoesFilme" class="sectionFilme__botao">Ver indicações de filme</button>
           </div>
         </div>
 
