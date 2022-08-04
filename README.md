@@ -1,4 +1,7 @@
-# Web Aplication - Indicae
+# Indicae
+Um software para indicação de livros e filmes, onde você pode inserir sua avaliação de filmes e livros e também ver as avaliações já inseridas
+
+## Cenário
 Trabalho complementar a Avaliação Semestral  da disciplina de Introdução ao Desenvolvimento Web no CEULP/Ulbra
 
 ## Objetivo do trabalho
